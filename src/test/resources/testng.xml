@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Tests" verbose="5">
+    <test name="Test1">
+        <classes>
+            <class name="com.hometask.ui.UIPostTest"/>
+            <class name="com.hometask.api.PostTest"/>
+        </classes>
+    </test>
+</suite>
