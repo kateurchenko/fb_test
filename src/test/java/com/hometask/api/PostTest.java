@@ -23,11 +23,12 @@ import static org.testng.Assert.assertEquals;
  */
 public class PostTest {
     public static final String PAGE_ENDPOINT = Constants.TEST_PAGE_ID + "/feed";
+    public static final int MAX_SYMBOLS_IN_POST = 63206;
     FacebookClient client;
 
     @DataProvider
     public static Object[][] getTextValuesForNegativeTest() {
-        return new Object[][]{{""}, {RandomStringUtils.randomAlphanumeric(63207)}};
+        return new Object[][]{{""}, {RandomStringUtils.randomAlphanumeric(MAX_SYMBOLS_IN_POST + 1)}};
     }
 
     @BeforeTest
