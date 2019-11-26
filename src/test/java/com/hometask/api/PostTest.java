@@ -22,7 +22,8 @@ public class PostTest {
 
     @BeforeTest
     public void init() {
-        client = new DefaultFacebookClient(Constants.TEST_USER_ACCESS_TOKEN, Version.VERSION_2_10);
+//        client = new DefaultFacebookClient(Constants.TEST_USER_ACCESS_TOKEN, Version.VERSION_2_10);
+        client = new DefaultFacebookClient(Constants.PAGE_ACCESS_TOKEN, Version.VERSION_2_10);
     }
 
     /**
@@ -33,12 +34,11 @@ public class PostTest {
         FacebookType message = client.publish(PAGE_ENDPOINT,
                 FacebookType.class,
                 Parameter.with("message", "test post message"),
-                Parameter.with("picture", "https://onlineimagetools.com/images/examples-onlineimagetools/duckling.gif"),
                 Parameter.with("caption", "duck"));
         String postId = message.getId();
         getPostsList()
                 .stream()
-                .filter(d -> d.getId().equals(postId))
+                .filter(d -> d.getId().equals(Constants.TEST_PAGE_ID + "_" + postId))
                 .findAny()
                 .orElseThrow(() -> new AssertionError(String.format("Message with %s was not posted!", postId)));
     }
